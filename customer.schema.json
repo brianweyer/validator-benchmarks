@@ -1,0 +1,47 @@
+{
+  "$id": "https://example.com/customer.schema.json",
+  "title": "Customer",
+  "description": "A Customer",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "exclusiveMinimum": 3,
+      "exclusiveMaximum": 50
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "birth_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "age": {
+      "type": "number",
+      "exclusiveMaximum": 100,
+      "exclusiveMinimum": 0
+    },
+    "addresses": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "state": {
+            "type": "string",
+            "format": "state"
+          },
+          "zip": {
+            "type": "string",
+            "format": "zip",
+            "maxLength": 10,
+            "minLength": 5
+          }
+        },
+        "required": ["state", "zip"]
+      }
+    }
+  },
+  "required": ["name", "birth_date", "addresses"]
+}
